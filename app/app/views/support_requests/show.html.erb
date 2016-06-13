@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Justification:</strong>
+  <%= @support_request.justification %>
+</p>
+
+<p>
+  <strong>Ttl:</strong>
+  <%= @support_request.ttl %>
+</p>
+
+<p>
+  <strong>Key:</strong>
+  <%= @support_request.key %>
+</p>
+
+<p>
+  <strong>Expired:</strong>
+  <%= @support_request.expired %>
+</p>
+
+<p>
+  <strong>Provider:</strong>
+  <%= @support_request.provider %>
+</p>
+
+<%= link_to 'Edit', edit_support_request_path(@support_request) %> |
+<%= link_to 'Back', support_requests_path %>

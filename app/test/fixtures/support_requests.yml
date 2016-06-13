@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  justification: MyText
+  ttl: 1
+  key: MyString
+  expired: false
+  provider: MyString
+
+two:
+  justification: MyText
+  ttl: 1
+  key: MyString
+  expired: false
+  provider: MyString

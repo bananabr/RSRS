@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Support Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Justification</th>
+      <th>Ttl</th>
+      <th>Key</th>
+      <th>Expired</th>
+      <th>Provider</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @support_requests.each do |support_request| %>
+      <tr>
+        <td><%= support_request.justification %></td>
+        <td><%= support_request.ttl %></td>
+        <td><%= support_request.key %></td>
+        <td><%= support_request.expired %></td>
+        <td><%= support_request.provider %></td>
+        <td><%= link_to 'Show', support_request %></td>
+        <td><%= link_to 'Edit', edit_support_request_path(support_request) %></td>
+        <td><%= link_to 'Destroy', support_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Support request', new_support_request_path %>
