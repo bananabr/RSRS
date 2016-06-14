@@ -1,25 +1,23 @@
 <%= form_for(@support_request) do |f| %>
-  <% if @support_request.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@support_request.errors.count, "error") %> prohibited this support_request from being saved:</h2>
-
-      <ul>
-      <% @support_request.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :justification %><br>
-    <%= f.text_area :justification %>
-  </div>
-  <div class="field">
-    <%= f.label :ttl %><br>
-    <%= f.number_field :ttl %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<% if @support_request.errors.any? %>
+		<div id="error_explanation" class="alert alert-danger">
+			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			<span class="sr-only">Error:</span>
+			<strong><%= pluralize(@support_request.errors.count, "error") %> prohibited this support_request from being saved:</strong>
+			<ul>
+				<% @support_request.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	<div class="form-group">
+		<div class="field">
+			<%= f.label :justification %><br>
+			<%= f.text_area :justification, class: "form-control" %>
+		</div>
+	</div>
+	<div class="actions">
+		<%= f.submit "Create",class: "btn btn-primary" %>
+	</div>
 <% end %>

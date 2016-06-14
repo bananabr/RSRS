@@ -1,0 +1,18 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">RSRS</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<%= create_nav_link(root_path, "Home", "home", "glyphicon-home") %>
+			<%= create_nav_link(support_requests_path, "Requests", "support_requests", "glyphicon-list-alt") %>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li>
+			<%= link_to destroy_user_session_path, method: :delete, :class => 'navbar-link' do%>
+				<span class="glyphicon glyphicon-off"></span>
+		<% end %>
+			</li>
+		</ul>
+	</div>
+</nav>
