@@ -11,6 +11,9 @@
 /log/*
 !/log/.keep
 /tmp
+*.sqlite3
+*.lock
+
 
 config/settings.local.yml
 config/settings/*.local.yml

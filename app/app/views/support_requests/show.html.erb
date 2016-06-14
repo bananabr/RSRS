@@ -6,8 +6,18 @@
 </p>
 
 <p>
+  <strong>Shared key:</strong>
+  <%= @support_request.shared_key %>
+</p>
+
+<p>
   <strong>Provider:</strong>
   <%= @support_request.provider %>
+</p>
+
+<p>
+  <strong>Tunnel created at:</strong>
+  <%= @support_request.tunnel_created_at %>
 </p>
 
 <p>
@@ -18,16 +28,6 @@
 <p>
   <strong>Expired:</strong>
   <%= @support_request.expired %>
-</p>
-
-<p>
-  <strong>Tunnel created at:</strong>
-  <%= @support_request.tunnel_created_at %>
-</p>
-
-<p>
-  <strong>Shared key:</strong>
-  <%= @support_request.shared_key %>
 </p>
 
 <%= link_to 'Edit', edit_support_request_path(@support_request) %> |

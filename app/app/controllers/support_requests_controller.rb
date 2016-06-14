@@ -69,6 +69,6 @@ class SupportRequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def support_request_params
-      params.require(:support_request).permit(:justification, :provider, :ttl, :expired, :tunnel_created_at, :shared_key)
+      params.require(:support_request).permit(:justification, :ttl)
     end
 end
