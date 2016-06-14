@@ -13,7 +13,7 @@ module ApplicationHelper
 		content_tag :li, class: "#{c}" do
 			link_to path do
 				content_tag(:span, "", class: "glyphicon #{glyph}") +
-					"#{text}"
+					"    #{text}"
 			end
 		end 
 	end

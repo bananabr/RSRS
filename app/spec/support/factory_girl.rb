@@ -7,10 +7,12 @@ RSpec.configure do |config|
       DatabaseCleaner.start
       #You can lint factories selectively by passing only factories you want linted:
       do_not_lint = []
-      factories_to_lint = FactoryGirl.factories.reject do |f|
-        do_not_lint.include?(f.name)
+      unless do_not_lint.empty?
+        factories_to_lint = FactoryGirl.factories.reject do |f|
+          do_not_lint.include?(f.name)
+        end
+        FactoryGirl.lint factories_to_lint
       end
-      FactoryGirl.lint factories_to_lint
     ensure
       DatabaseCleaner.clean
     end
