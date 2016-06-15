@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Support Requests</h1>
 
 <table class="table">
@@ -24,7 +22,11 @@
 		<td><%= support_request.expired? ? "yes" : "no" %></td>
 		<td><%= support_request.tunnel_created_at.nil? ? "--" : support_request.tunnel_created_ate %></td>
 		<td><%= support_request.tunnel_created_at.nil? || support_request.expired? ? "no" : "yes" %></td>
-		<td><%= link_to 'Details', support_request %></td>
+		<td>
+			<%= link_to support_request do%>
+				<% content_tag(:span, "", class: "glyphicon glyphicon-search") %>
+			<%end%>
+		</td>
 	</tr>
 	<% end %>
 	</tbody>

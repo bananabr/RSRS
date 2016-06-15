@@ -1,16 +1,21 @@
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<h2>Eu preciso de ajuda</h2>
+		<%= form_tag("/support_requests/new", method: :get) do %>
+			<%= submit_tag("Novo pedido de suporte",class: "btn btn-primary") %>
+	<% end %>
 
-<h2>Eu preciso de ajuda</h2>
-<%= form_tag("/support_requests/new", method: :get) do %>
-	<%= submit_tag("Novo pedido de suporte",class: "btn btn-primary") %>
-<% end %>
 
-
-<h2>Eu quero ajudar</h2>
-<%= form_tag("/support_requests", method: :get ) do %>
-	<div class="form-group">
-		<%= label_tag(:shared_key, "Chave informada pelo cliente:") %>
-		<%= text_field_tag(:shared_key, "",class: "form-control") %>
-		<%= hidden_field_tag(:support, 1, class: "form-control") %>
+		<h2>Eu quero ajudar</h2>
+		<%= form_tag("/support_requests", method: :get ) do %>
+			<div class="form-group">
+			<%= label_tag(:shared_key, "Chave informada pelo cliente:") %>
+			<%= text_field_tag(:shared_key, "",class: "form-control") %>
+			<%= hidden_field_tag(:support, 1, class: "form-control") %>
+		</div>
+		<%= submit_tag("OK",class: "btn btn-primary") %>
+	<% end %>
 	</div>
-	<%= submit_tag("OK",class: "btn btn-primary") %>
-<% end %>
+	<div class="col-md-4"></div>
+</div>

@@ -19,6 +19,11 @@
 		</p>
 
 		<p>
+		<strong>Request created at:</strong>
+		<%= @support_request.created_at %>
+		</p>
+
+		<p>
 		<strong>Tunnel created at:</strong>
 		<%= @support_request.tunnel_created_at %>
 		</p>
@@ -33,7 +38,6 @@
 		<%= @support_request.expired %>
 		</p>
 
-		<%= link_to 'Edit', edit_support_request_path(@support_request) %> |
-		<%= link_to 'Back', support_requests_path %>
 	</div>
 </div>
+<%= link_to 'Request list', support_requests_path %>

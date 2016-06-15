@@ -6,7 +6,14 @@ class User < ActiveRecord::Base
 	has_many :support_requests
 
 	before_save :get_ldap_lastname, :get_ldap_firstname, :get_ldap_displayname, :get_ldap_email
-	
+
+	validates :username, presence: true, uniqueness: true
+
+	#hack for remember_token
+	def rememberable_value
+		Digest::SHA1.hexdigest("#{self.email}#{self.username}")[0,29]
+	end
+
 	private
 	def get_ldap_lastname
 		Rails::logger.info("### Getting the users last name")
