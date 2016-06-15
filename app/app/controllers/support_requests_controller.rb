@@ -1,10 +1,12 @@
-class SupportRequestsController < ApplicationController
+class SupportRequestsController < LoginRequiredController
   before_action :set_support_request, only: [:show, :edit, :update, :destroy]
 
   # GET /support_requests
   # GET /support_requests.json
   def index
-    @support_requests = SupportRequest.all
+    @support_requests = current_user.support_requests.order(id: :desc)
+    @support_requests = @support_requests.offset(@skip) unless @skip.nil? 
+    @support_requests = @support_requests.first(@limit) unless @limit.nil? 
   end
 
   # GET /support_requests/1
@@ -25,10 +27,14 @@ class SupportRequestsController < ApplicationController
   # POST /support_requests.json
   def create
     @support_request = SupportRequest.new(support_request_params)
+    @support_request.ttl = Settings.default_request_ttl
+    @support_request.user = current_user
+    @support_request.provider = Settings.default_request_tunnel_provider
+    @support_request.shared_key = Utils::generate_random_string(Settings.default_request_shared_key_size)
 
     respond_to do |format|
       if @support_request.save
-        format.html { redirect_to @support_request, notice: 'Support request was successfully created.' }
+        format.html { redirect_to support_requests_url, notice: 'Support request was successfully created.' }
         format.json { render :show, status: :created, location: @support_request }
       else
         format.html { render :new }
@@ -42,7 +48,7 @@ class SupportRequestsController < ApplicationController
   def update
     respond_to do |format|
       if @support_request.update(support_request_params)
-        format.html { redirect_to @support_request, notice: 'Support request was successfully updated.' }
+        format.html { redirect_to support_requests_url, notice: 'Support request was successfully updated.' }
         format.json { render :show, status: :ok, location: @support_request }
       else
         format.html { render :edit }
@@ -64,7 +70,7 @@ class SupportRequestsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_support_request
-      @support_request = SupportRequest.find(params[:id])
+      @support_request = current_user.support_requests.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

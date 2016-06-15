@@ -1,37 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Support Requests</h1>
+<h1>Support Requests</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Justification</th>
-      <th>Provider</th>
-      <th>Ttl</th>
-      <th>Expired</th>
-      <th>Tunnel created at</th>
-      <th>Shared key</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<table class="table">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Shared key</th>
+			<th>Ttl</th>
+			<th>Expired?</th>
+			<th>Tunnel created at</th>
+			<th>Tunnel available?</th>
+			<th colspan="1"></th>
+		</tr>
+	</thead>
 
-  <tbody>
-    <% @support_requests.each do |support_request| %>
-      <tr>
-        <td><%= support_request.justification %></td>
-        <td><%= support_request.provider %></td>
-        <td><%= support_request.ttl %></td>
-        <td><%= support_request.expired %></td>
-        <td><%= support_request.tunnel_created_at %></td>
-        <td><%= support_request.shared_key %></td>
-        <td><%= link_to 'Show', support_request %></td>
-        <td><%= link_to 'Edit', edit_support_request_path(support_request) %></td>
-        <td><%= link_to 'Destroy', support_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+	<tbody>
+	<% @support_requests.each do |support_request| %>
+		<tr>
+		<td><%= support_request.id %></td>
+		<td><%= support_request.shared_key %></td>
+		<td><%= support_request.ttl %></td>
+		<td><%= support_request.expired? ? "yes" : "no" %></td>
+		<td><%= support_request.tunnel_created_at.nil? ? "--" : support_request.tunnel_created_ate %></td>
+		<td><%= support_request.tunnel_created_at.nil? || support_request.expired? ? "no" : "yes" %></td>
+		<td><%= link_to 'Details', support_request %></td>
+	</tr>
+	<% end %>
+	</tbody>
 </table>
-
 <br>
-
 <%= link_to 'New Support request', new_support_request_path %>

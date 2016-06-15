@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 	# :confirmable, :lockable, :timeoutable and :omniauthable
 	devise :ldap_authenticatable, :rememberable, :trackable
 	attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :firstname, :lastname, :displayname
-	has_many :support_request
+	has_many :support_requests
 
 	before_save :get_ldap_lastname, :get_ldap_firstname, :get_ldap_displayname, :get_ldap_email
 	

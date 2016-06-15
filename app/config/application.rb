@@ -27,5 +27,7 @@ module App
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
     config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff|woff2)$)
     Sass::Script::Number.precision = 8
+    # Include lib directory in autoload paths
+    config.autoload_paths << Rails.root.join('lib')
   end
 end
