@@ -1,34 +1,39 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Justification:</strong>
-  <%= @support_request.justification %>
-</p>
+<div class="panel panel-default">
+	<div class="panel-heading">Request #<%= @support_request.id %></div>
+	<div class="panel-body">
+		<p>
+		<strong>Justification:</strong>
+		<%= @support_request.justification %>
+		</p>
 
-<p>
-  <strong>Shared key:</strong>
-  <%= @support_request.shared_key %>
-</p>
+		<p>
+		<strong>Shared key:</strong>
+		<%= @support_request.shared_key %>
+		</p>
 
-<p>
-  <strong>Provider:</strong>
-  <%= @support_request.provider %>
-</p>
+		<p>
+		<strong>Provider:</strong>
+		<%= @support_request.provider %>
+		</p>
 
-<p>
-  <strong>Tunnel created at:</strong>
-  <%= @support_request.tunnel_created_at %>
-</p>
+		<p>
+		<strong>Tunnel created at:</strong>
+		<%= @support_request.tunnel_created_at %>
+		</p>
 
-<p>
-  <strong>Ttl:</strong>
-  <%= @support_request.ttl %>
-</p>
+		<p>
+		<strong>Ttl:</strong>
+		<%= @support_request.ttl %>
+		</p>
 
-<p>
-  <strong>Expired:</strong>
-  <%= @support_request.expired %>
-</p>
+		<p>
+		<strong>Expired:</strong>
+		<%= @support_request.expired %>
+		</p>
 
-<%= link_to 'Edit', edit_support_request_path(@support_request) %> |
-<%= link_to 'Back', support_requests_path %>
+		<%= link_to 'Edit', edit_support_request_path(@support_request) %> |
+		<%= link_to 'Back', support_requests_path %>
+	</div>
+</div>
