@@ -12,9 +12,9 @@ RSpec.describe SupportRequest, type: :model do
     r2 = FactoryGirl.build(:support_request)
     r3 = FactoryGirl.build(:support_request)
 
-    r1.shared_key = "a"*Random.rand(32)
-    r2.shared_key = "a"*32
-    r3.shared_key = "a"*33+"b"*Random.rand(100)
+    r1.shared_key = Utils::generate_random_string(Random.rand(32))
+    r2.shared_key = Utils::generate_random_string(32)
+    r3.shared_key = Utils::generate_random_string(32)+Utils::generate_random_string(Random.rand(100))
 
     expect(r1).to be_invalid
     expect(r1.errors[:shared_key]).to be_present
