@@ -4,7 +4,7 @@
 # environment if you need something different per enviornment.
 authorizations: &AUTHORIZATIONS
   allow_unauthenticated_bind: false
-  group_base: ENV["RSRS_LDAP_GROUP_BASE"]
+  group_base: <%= ENV["RSRS.LDAP.GROUP_BASE"] %>
   ## Requires config.ldap_check_group_membership in devise.rb be true
   # Can have multiple values, must match all to be authorized
   required_groups:
@@ -12,7 +12,7 @@ authorizations: &AUTHORIZATIONS
     # - cn=admins,ou=groups,dc=test,dc=com
     # - cn=users,ou=groups,dc=test,dc=com
     # If an array is given, the first element will be the attribute to check against, the second the group name
-    - ["memberOf", ENV["RSRS_LDAP_USERS_GROUP"]]
+    - ["memberOf", <%= ENV["RSRS.LDAP.USERS.GROUP"] %>]
   ## Requires config.ldap_check_attributes in devise.rb to be true
   ## Can have multiple attributes and values, must match all to be authorized
   require_attribute:
@@ -21,12 +21,12 @@ authorizations: &AUTHORIZATIONS
 ## Environment
 
 development:
-  host: ENV["RSRS_LDAP_SERVER"]
+  host: <%= ENV["RSRS.LDAP.SERVER"] %>
   port: 389
   attribute: "samAccountName"
-  base: ENV["RSRS_LDAP_BASE_DN"]
-  admin_user: ENV["RSRS_LDAP_ADMIN_DN"]
-  admin_password: ENV["RSRS_LDAP_ADMIN_PASSWORD"]
+  base: <%= ENV["RSRS.LDAP.BASE_DN"] %>
+  admin_user: <%= ENV["RSRS.LDAP.ADMIN_DN"] %>
+  admin_password: <%= ENV["RSRS.LDAP.ADMIN_PASSWORD"] %>
   ssl: false
   <<: *AUTHORIZATIONS
 

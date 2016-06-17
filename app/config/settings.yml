@@ -1,10 +1,9 @@
-#default_request_ttl: 1440
 default_request_ttl: 5
 default_request_shared_key_size: 32
 default_request_tunnel_provider: "SoftEther"
 providers:
   soft_ether:
-    server: ENV["RSRS_SOFTETHER_SERVER"]
+    server: <%= ENV["RSRS.PROVIDERS.SOFT_ETHER.SERVER"] %>
     port: "443"
-    admin_hub_password: ENV["RSRS_SOFTETHER_PASSWORD"]
+    admin_hub_password: <%= ENV["RSRS.PROVIDERS.SOFT_ETHER.PASSWORD"] %>
     vpncmd_path: "/usr/local/bin/vpncmd"
