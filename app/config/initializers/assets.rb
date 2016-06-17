@@ -9,3 +9,12 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
+
+Rails.application.config.before_configuration do
+  env_file = File.join(Rails.root, 'config', 'local_env.yml')
+  if File.exists?(env_file)
+    YAML.load(File.open(env_file)).each do |key, value|
+      ENV[key.to_s] = value
+    end
+  end
+end

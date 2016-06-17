@@ -20,7 +20,7 @@
 		<td><%= support_request.shared_key %></td>
 		<td><%= support_request.ttl %></td>
 		<td><%= support_request.expired? ? "yes" : "no" %></td>
-		<td><%= support_request.tunnel_created_at.nil? ? "--" : support_request.tunnel_created_ate %></td>
+		<td><%= support_request.tunnel_created_at.nil? ? "--" : support_request.tunnel_created_at %></td>
 		<td><%= support_request.tunnel_created_at.nil? || support_request.expired? ? "no" : "yes" %></td>
 		<td>
 			<%= link_to support_request do%>

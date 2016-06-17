@@ -2,6 +2,7 @@ class SupportRequest < ActiveRecord::Base
   belongs_to :user
 
   scope :expired, -> { where(expired: true) }
+  scope :not_expired, -> { where(expired: nil) }
 
   validates :user, :presence => true
   validates :provider, :presence => true
