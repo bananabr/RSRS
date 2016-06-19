@@ -7,3 +7,5 @@ providers:
     port: "443"
     admin_hub_password: <%= ENV["RSRS.PROVIDERS.SOFT_ETHER.PASSWORD"] %>
     vpncmd_path: "/usr/local/bin/vpncmd"
+    client_download_url: "http://www.softether-download.com/files/softether/v4.20-9608-rtm-2016.04.17-tree/Windows/SoftEther_VPN_Client/softether-vpnclient-v4.20-9608-rtm-2016.04.17-windows-x86_x64-intel.exe"
+

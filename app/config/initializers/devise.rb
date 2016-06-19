@@ -2,15 +2,15 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   # ==> LDAP Configuration 
-  config.ldap_logger = false
+  config.ldap_logger = Rails.env.downcase == 'development' ? true : false
   config.ldap_create_user = true
   config.ldap_update_password = false
   config.ldap_config = "#{Rails.root}/config/ldap.yml"
   config.ldap_check_group_membership = true
   #config.ldap_check_group_membership_without_admin = false
   config.ldap_check_attributes = true
-  config.ldap_use_admin_to_bind = false
-  config.ldap_ad_group_check = true
+  config.ldap_use_admin_to_bind = Rails.env.downcase == 'development' ? true : false
+  config.ldap_ad_group_check = Rails.env.downcase == 'development' ? false : true
 
   # ==> Advanced LDAP Configuration
   # config.ldap_auth_username_builder = Proc.new() {|attribute, login, ldap| "#{attribute}=#{login},#{ldap.base}" }

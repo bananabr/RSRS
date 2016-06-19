@@ -31,13 +31,21 @@ class User < ActiveRecord::Base
 
 	def get_ldap_displayname
 		Rails::logger.info("### Getting the users display name")
-		tempname = Devise::LDAP::Adapter.get_ldap_param(self.username,"displayName").first
+		begin
+			tempname = Devise::LDAP::Adapter.get_ldap_param(self.username,"displayName").first
+		rescue
+			tempname = "#{self.firstname} #{self.lastname}"
+		end
 		self.displayname = tempname
 	end
 
 	def get_ldap_email
 		Rails::logger.info("### Getting the users email address")
-		tempmail = Devise::LDAP::Adapter.get_ldap_param(self.username,"proxyAddresses").first.split(":")[1]
+		begin
+			tempmail = Devise::LDAP::Adapter.get_ldap_param(self.username,"proxyAddresses").first.split(":")[1]
+		rescue
+			tempmail = Devise::LDAP::Adapter.get_ldap_param(self.username,"mail").first
+		end
 		self.email = tempmail
 	end
 end
