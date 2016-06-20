@@ -27,10 +27,7 @@ class SupportRequestsController < LoginRequiredController
   # POST /support_requests.json
   def create
     @support_request = SupportRequest.new(support_request_params)
-    @support_request.ttl = Settings.default_request_ttl
     @support_request.user = current_user
-    @support_request.provider = Settings.default_request_tunnel_provider
-    @support_request.shared_key = Utils::generate_random_string(Settings.default_request_shared_key_size)
 
     respond_to do |format|
       if @support_request.save

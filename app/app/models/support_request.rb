@@ -1,6 +1,8 @@
 class SupportRequest < ActiveRecord::Base
   belongs_to :user
 
+  before_validation :set_defaults
+
   scope :expired, -> { where(expired: true) }
   scope :not_expired, -> { where(expired: nil) }
 
@@ -16,5 +18,13 @@ class SupportRequest < ActiveRecord::Base
 	  else
 	    (self.created_at + self.ttl.minutes) <= DateTime.now
 	  end
+  end
+
+  private
+
+  def set_defaults()
+    self.ttl ||= Settings.default_request_ttl
+    self.provider ||= Settings.default_request_tunnel_provider
+    self.shared_key ||= Utils::generate_random_string(Settings.default_request_shared_key_size)
   end
 end

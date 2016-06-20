@@ -12,6 +12,12 @@ pt-BR:
     attributes:
       support_request:
         justification: "justificativa"
+        shared_key: "chave compartilhada"
+        provider: "provedor"
+        created_at: "solicitação criada em"
+        tunnel_created_at: "túnel criado em"
+        ttl: "TTL"
+        expired: "expirado"
   application:
     nav_bar:
       requests_button: "Solicitações"
@@ -21,7 +27,12 @@ pt-BR:
     'yes': sim
     'no': não
     create: "criar"
+    error: "erro"
   support_requests:
+    form:
+      error_banner_header:
+        one: "erro impediu esta solicitação de ser salva"
+        other: "erros impediram esta solicitação de ser salva"
     new:
       title: "Nova solicitação"
       request_list_link: "Minhas solicitações"
@@ -33,9 +44,15 @@ pt-BR:
         shared_key: "Chave Compartilhada"
         ttl: "TTL"
         expired: "Expirado?"
-        tunnel_created_at: "Túnel criado em"
         tunnel_availble: "Túnel disponível?"
-      
+    show:
+      labels:
+        id: "ID"
+        shared_key: "Chave Compartilhada"
+        ttl: "TTL"
+        expired: "Expirado?"
+        tunnel_availble: "Túnel disponível?"
+     
   devise:
     confirmations:
       confirmed: 'Sua conta foi confirmada com sucesso. Você está logado.'

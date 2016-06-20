@@ -2,8 +2,8 @@
 	<% if @support_request.errors.any? %>
 		<div id="error_explanation" class="alert alert-danger">
 			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-			<span class="sr-only">Error:</span>
-			<strong><%= pluralize(@support_request.errors.count, "error") %> prohibited this support_request from being saved:</strong>
+			<span class="sr-only">Error</span>
+			<strong><%= pluralize(@support_request.errors.count, t('.error_banner_header.one'), t('.error_banner_header.other')) %>:</strong>
 			<ul>
 				<% @support_request.errors.full_messages.each do |message| %>
 					<li><%= message %></li>

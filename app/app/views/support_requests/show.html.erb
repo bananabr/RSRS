@@ -1,41 +1,41 @@
 <p id="notice"><%= notice %></p>
 
 <div class="panel panel-default">
-	<div class="panel-heading">Request #<%= @support_request.id %></div>
+	<div class="panel-heading"><%= "##{SupportRequest.model_name.human.capitalize} - #{@support_request.id}" %></div>
 	<div class="panel-body">
 		<p>
-		<strong>Justification:</strong>
+		<strong><%= SupportRequest.human_attribute_name(:justification).capitalize %>:</strong>
 		<%= @support_request.justification %>
 		</p>
 
 		<p>
-		<strong>Shared key:</strong>
+		<strong><%= SupportRequest.human_attribute_name(:shared_key).capitalize %>:</strong>
 		<%= @support_request.shared_key %>
 		</p>
 
 		<p>
-		<strong>Provider:</strong>
+		<strong><%= SupportRequest.human_attribute_name(:provider).capitalize %>:</strong>
 		<%= @support_request.provider %>
 		</p>
 
 		<p>
-		<strong>Request created at:</strong>
+		<strong><%= SupportRequest.human_attribute_name(:created_at).capitalize %>:</strong>
 		<%= @support_request.created_at %>
 		</p>
 
 		<p>
-		<strong>Tunnel created at:</strong>
-		<%= @support_request.tunnel_created_at %>
+		<strong><%= SupportRequest.human_attribute_name(:tunnel_created_at).capitalize %>:</strong>
+		<%= @support_request.tunnel_created_at.present? ? @support_request.tunnel_created_at.present : '--' %>
 		</p>
 
 		<p>
-		<strong>Ttl:</strong>
+		<strong><%= SupportRequest.human_attribute_name(:ttl).capitalize %>:</strong>
 		<%= @support_request.ttl %>
 		</p>
 
 		<p>
-		<strong>Expired:</strong>
-		<%= @support_request.expired %>
+		<strong><%= SupportRequest.human_attribute_name(:expired).capitalize %>:</strong>
+		<%= @support_request.expired? ? t("defaults.yes") : t("defaults.no")%>
 		</p>
 
 	</div>
