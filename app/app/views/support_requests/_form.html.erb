@@ -13,11 +13,11 @@
 	<% end %>
 	<div class="form-group">
 		<div class="field">
-			<%= f.label :justification %><br>
+			<%= f.label :justification %>:<br>
 			<%= f.text_area :justification, class: "form-control" %>
 		</div>
 	</div>
 	<div class="actions">
-		<%= f.submit "Create",class: "btn btn-primary" %>
+		<%= f.submit t("defaults.create").capitalize,class: "btn btn-primary" %>
 	</div>
 <% end %>

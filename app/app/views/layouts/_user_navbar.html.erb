@@ -5,12 +5,12 @@
 		</div>
 		<ul class="nav navbar-nav">
 			<%= create_nav_link(root_path, "Home", "home", "glyphicon-home") %>
-			<%= create_nav_link(support_requests_path, "Requests", "support_requests", "glyphicon-list-alt") %>
+			<%= create_nav_link(support_requests_path, t("application.nav_bar.requests_button"), "support_requests", "glyphicon-list-alt") %>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li>
 			<%= link_to destroy_user_session_path, method: :delete, :class => 'navbar-link' do%>
-				<%="Logged as, #{current_user.firstname}"%>
+				<%="#{t("application.nav_bar.logged_as")}: #{current_user.firstname}"%>
 				<span class="glyphicon glyphicon-off"></span>
 			<% end %>
 			</li>

@@ -15,12 +15,24 @@
 			<% end %>
 		</header>
 		<div id="content" class="container">
-			<% if notice %>
-				<p class="alert alert-success"><%= notice %></p>
-			<% end %>
-			<% if alert %>
-				<p class="alert alert-danger"><%= alert %></p>
-			<% end %>
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<% if notice %>
+						<p class="alert alert-success">
+							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							<%= notice %>
+						</p>
+					<% end %>
+					<% if alert %>
+						<p class="alert alert-danger">
+							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							<%= alert %>
+						</p>
+					<% end %>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
 			<%= yield %>
 		</div>
 	</body>

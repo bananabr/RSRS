@@ -1,14 +1,14 @@
-<h1>Support Requests</h1>
+<h1><%= t '.title' %></h1>
 
 <table class="table">
 	<thead>
 		<tr>
-			<th>ID</th>
-			<th>Shared key</th>
-			<th>Ttl</th>
-			<th>Expired?</th>
-			<th>Tunnel created at</th>
-			<th>Tunnel available?</th>
+			<th><%= t '.th.id' %></th>
+			<th><%= t '.th.shared_key' %></th>
+			<th><%= t '.th.ttl' %></th>
+			<th><%= t '.th.expired' %> </th>
+			<th><%= t '.th.tunnel_created_at' %></th>
+			<th><%= t '.th.tunnel_availble' %></th>
 			<th colspan="1"></th>
 		</tr>
 	</thead>
@@ -16,20 +16,20 @@
 	<tbody>
 	<% @support_requests.each do |support_request| %>
 		<tr>
-		<td><%= support_request.id %></td>
-		<td><%= support_request.shared_key %></td>
-		<td><%= support_request.ttl %></td>
-		<td><%= support_request.expired? ? "yes" : "no" %></td>
-		<td><%= support_request.tunnel_created_at.nil? ? "--" : support_request.tunnel_created_at %></td>
-		<td><%= support_request.tunnel_created_at.nil? || support_request.expired? ? "no" : "yes" %></td>
-		<td>
-			<%= link_to support_request do%>
-				<% content_tag(:span, "", class: "glyphicon glyphicon-search") %>
-			<%end%>
-		</td>
-	</tr>
+			<td><%= support_request.id %></td>
+			<td><%= support_request.shared_key %></td>
+			<td><%= support_request.ttl %></td>
+			<td><%= support_request.expired? ? t('defaults.yes') : t('defaults.no') %></td>
+			<td><%= support_request.tunnel_created_at.nil? ? "--" : support_request.tunnel_created_at %></td>
+			<td><%= support_request.tunnel_created_at.nil? || support_request.expired? ? t('defaults.no') : t('defaults.yes') %></td>
+			<td>
+				<%= link_to support_request do%>
+					<% content_tag(:span, "", class: "glyphicon glyphicon-search") %>
+				<%end%>
+			</td>
+		</tr>
 	<% end %>
 	</tbody>
 </table>
 <br>
-<%= link_to 'New Support request', new_support_request_path %>
+<%= link_to t(".new_request_link"), new_support_request_path %>
