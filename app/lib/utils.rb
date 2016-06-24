@@ -8,7 +8,7 @@ class Utils
 				if $?.exited? && $?.exitstatus == 0
 					true
 				else
-					raise RuntimeError
+					raise RuntimeError,"Command returned status code:#{$?.exitstatus}"
 				end
 			end
 		end
@@ -21,7 +21,8 @@ class Utils
 				if $?.exited? && $?.exitstatus == 0
 					result
 				else
-					raise RuntimeError
+					raise RuntimeError,"Command returned status code:#{$?.exitstatus}.\n" \
+						"Output was:\n#{result}"
 				end
 			end
 		end

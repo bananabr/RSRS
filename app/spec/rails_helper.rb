@@ -60,4 +60,8 @@ RSpec.configure do |config|
   Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
   config.include SpecHelpers::Common
   config.include Devise::TestHelpers, type: :controller
+  #http://stackoverflow.com/questions/9072338/should-i-stub-the-model-in-factory-girl-or-in-the-spec-file-while-testing/31129467#31129467
+  FactoryGirl::SyntaxRunner.class_eval do
+    include RSpec::Mocks::ExampleMethods
+  end
 end

@@ -14,8 +14,9 @@ RSpec.describe SupportRequest, type: :model do
 
     r1.shared_key = Utils::generate_random_string(Random.rand(32))
     r2.shared_key = Utils::generate_random_string(32)
-    r3.shared_key = Utils::generate_random_string(32)+Utils::generate_random_string(Random.rand(100))
+    r3.shared_key = Utils::generate_random_string(32)+Utils::generate_random_string(Random.rand(100)+1)
 
+    puts r1.errors
     expect(r1).to be_invalid
     expect(r1.errors[:shared_key]).to be_present
     expect(r2).to be_valid

@@ -4,10 +4,10 @@ FactoryGirl.define do
     sequence(:email) { |n| "person#{n}@example.com" }
     password (0...8).map { (65 + Random.rand(26)).chr }.join
     after(:build) do |u|
-      u.stub(:get_ldap_firstname).and_return 'ValidFirstName'
-      u.stub(:get_ldap_lastname).and_return 'Valid Last Name'
-      u.stub(:get_ldap_displayname).and_return 'Valid Display Name'
-      u.stub(:get_ldap_email).and_return u.email
+      allow(u).to receive(:get_ldap_firstname) { 'ValidFirstName' }
+      allow(u).to receive(:get_ldap_lastname) { 'Valid Last Name' }
+      allow(u).to receive(:get_ldap_displayname) { 'Valid Display Name' }
+      allow(u).to receive(:get_ldap_email) { u.email }
     end
   end
 end
