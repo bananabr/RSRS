@@ -13,6 +13,7 @@
 /tmp
 *.sqlite3
 *.lock
+*.swp
 .env
 config/settings.local.yml
 config/settings/*.local.yml

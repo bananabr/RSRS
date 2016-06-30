@@ -180,10 +180,10 @@ module SoftEther
 			end
 		end
 	
-		private
 		def hub_cache_is_dirty?()
 			@hub_cache_dirty
 		end
+		private
 		def update_hub_cache()
 			@hub_cache_dirty = false
 		end

@@ -8,6 +8,7 @@ RSpec.describe SupportRequest, type: :model do
 
   it "should have a shared key with exactly 32 characters" do
     check_field_requirement(described_class, "shared_key")
+
     r1 = FactoryGirl.build(:support_request)
     r2 = FactoryGirl.build(:support_request)
     r3 = FactoryGirl.build(:support_request)
@@ -16,7 +17,6 @@ RSpec.describe SupportRequest, type: :model do
     r2.shared_key = Utils::generate_random_string(32)
     r3.shared_key = Utils::generate_random_string(32)+Utils::generate_random_string(Random.rand(100)+1)
 
-    puts r1.errors
     expect(r1).to be_invalid
     expect(r1.errors[:shared_key]).to be_present
     expect(r2).to be_valid
