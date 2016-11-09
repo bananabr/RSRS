@@ -10,6 +10,9 @@ module SoftEther
 				@expiration_date = nil
 			end
 
+			def password
+				@password
+			end
 
 			def update_password!(password)
 				@hub.execute_command!("UserPasswordSet #{@name} /PASSWORD:#{password}")
@@ -48,6 +51,13 @@ module SoftEther
 			@password = p 
 		end
 
+		def create_user(name,password=nil)
+			begin
+				create_user!(name,password)
+			rescue
+				nil
+			end
+		end
 		def create_user!(name,password=nil)
 			execute_command!("UserCreate #{name} /GROUP: /REALNAME: /NOTE:")
 			@users[name] = User.new(name,self)
